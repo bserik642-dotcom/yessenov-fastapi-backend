@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: yessenov-fastapi-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: INTERNAL_BACKEND_SECRET
+        sync: false
+      - key: AI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "https://yessenov-park-pathfinder.lovable.app,https://id-preview--e873b07f-c176-4a8f-bdcb-48bee67014e0.lovable.app,http://localhost:8080"
